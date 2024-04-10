@@ -63,7 +63,7 @@
                     <ul>
                         <li class="active"><a href="./index.html">خانه</a></li>
                         <li><a href="./about.html">درباره ما</a></li>
-                        <li><a href="./episodes.html">پادکست ها</a></li>
+                        <li><a href="{{url('/episodes')}}">پادکست ها</a></li>
                         <li><a href="#">صفحات</a>
                             <ul class="dropdown">
                                 <li><a href="./episodes-details.html">مشخصات پادکست</a></li>
