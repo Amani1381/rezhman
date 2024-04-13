@@ -11,3 +11,6 @@ Route::get('/episodes', function () {
 Route::get('/episodes-details', function () {
     return view('index.v1.users.episodes-details');
 });
+Route::get('/catadd', function () {
+    return view('index.v1.admin.categories.add');
+});
