@@ -14,3 +14,7 @@ Route::get('/episodes-details', function () {
 Route::get('/catadd', function () {
     return view('index.v1.admin.categories.add');
 });
+Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\َAdmin'],function (){
+    Route::resource('categories','CategoryController');
+    Route::get('categories/delete/{id}','CategoryController@delete')->name('categories.delete');
+    });
