@@ -64,8 +64,23 @@
                                         <!--end::کارت header-->
                                         <!--begin::کارت body-->
                                         <div class="card-body pt-5">
+                                            @if(Session::has('category_error'))
+                                                <div class="alert alert-error">
+                                                    </div>{{Session('category_error')}}<div>
+                                                </div>
+                                            @endif
+                                            @if($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach($errors->all() as $error )
+                                                            <li>{{$error}}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                             <!--begin::Form-->
-                                            <form id="kt_ecommerce_settings_general_form" class="form" action="#">
+                                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{url('admin/categories/store')}}" method="post"
+                                            @csrf>
                                                 <!--begin::Input group-->
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Tags-->
@@ -81,7 +96,7 @@
                                                     </label>
                                                     <!--end::Tags-->
                                                     <!--begin::Input-->
-                                                    <input type="text" class="form-control form-control-solid" name="name" value="" />
+                                                    <input type="text" class="form-control form-control-solid" name="name" id="name" value="" />
                                                     <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -98,8 +113,11 @@
                                                             <!--end::Tags-->
                                                             <div class="w-100">
                                                                 <!--begin::انتخاب2-->
-                                                                <select id="kt_ecommerce_select2_country" class="form-select form-select-solid" name="country" data-kt-ecommerce-settings-type="select2_flags" data-placeholder="انتخاب کشور">
+                                                                <select id="kt_ecommerce_select2_country" class="form-select form-select-solid" name="parent_id" id="parent_id" data-kt-ecommerce-settings-type="select2_flags" data-placeholder="انتخاب کشور">
                                                                     <option>انتخاب کنید</option>
+                                                                    @foreach($categories as $row)
+                                                                        <option value="{{$row->id}}">{{$row->name}}</option>
+                                                                    @endforeach
                                                                     </select>
                                                                 <!--end::انتخاب2-->
                                                             </div>
