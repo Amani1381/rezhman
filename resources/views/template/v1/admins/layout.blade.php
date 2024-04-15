@@ -538,6 +538,7 @@ ph
             <!--end::Modal - Users جستجو-->
             <!--end::Modals-->
             <!--begin::Javascript-->
+            @yield('script-ckeditor')
             <script>var hostUrl = "{{asset('assets/')}}";</script>
             <!--begin::Global Javascript Bundle(mandatory for all pages)-->
             <script src="{{asset('assets/v1/admins/plugins/global/plugins.bundle.js')}}"></script>

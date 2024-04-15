@@ -11,10 +11,12 @@ Route::get('/episodes', function () {
 Route::get('/episodes-details', function () {
     return view('index.v1.users.episodes-details');
 });
-Route::get('/catadd', function () {
-    return view('index.v1.admin.categories.add');
+Route::get('/blog', function () {
+    return view('index.v1.admin.blogs.show');
 });
 Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\َAdmin'],function (){
     Route::resource('categories','CategoryController');
     Route::get('categories/delete/{id}','CategoryController@delete')->name('categories.delete');
+    Route::resource('blogs','BlogController');
+    Route::get('blog/delete/{id}','BlogController@delete')->name('blog.delete');
     });
