@@ -54,7 +54,7 @@ class CategoryController extends Controller
              Session::flash('category_error','خطا در انجام عملیات');
              return redirect('admin/categories');
          }
- 
+
     }
 
     /**
@@ -108,12 +108,26 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
     }
-    public function delete(string $id)
+    public function delete($id)
     {
-        //
+        try{
+            $category=Category::findorfail($id);
+            if($category!=null){
+                $category->delete();
+                Session::flash('category_success','عملیات موفقیت آمیز بود');
+                return redirect('admin/categories');
+            }
+            if ($category==null){
+                Session::flash('category_error','رکورد یافت نشد');
+                return redirect('admin/categories');
+            }
+        }catch (\Exception $er){
+            Session::flash('category_error','خطا در انجام عملیات');
+            return redirect('admin/categories');
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\view;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -44,7 +45,18 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        if (view::exists('index.v1.admin.blogs.show')){
+            $blog = Blog::findorfail($id);
+            if($blog!=null){
+                return view('index.v1.admin.blogs.show',compact('blog'));
+            }
+            if ($blog==null){
+                Session::flash('blog_error','رکورد یافت نشد');
+                return redirect('admin/blogs');
+            }
+        }else{
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**

@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 Route::get('/', function () {
     return view('index.v1.users.index');
 });
-//@@@@@@@@
+
 
 
 Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin'],function (){
