@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\BlogController;
 Route::get('/', function () {
     return view('index.v1.users.index');
 });
-
+//@@@@@@@
 
 Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin'],function (){
     Route::resource('categories','CategoryController');
