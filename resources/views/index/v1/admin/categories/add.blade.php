@@ -79,8 +79,8 @@
                                                 </div>
                                             @endif
                                             <!--begin::Form-->
-                                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{url('admin/categories/store')}}" method="post"
-                                            @csrf>
+                                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{url('admin/categories/store')}}" method="post">
+                                            @csrf
                                                 <!--begin::Input group-->
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Tags-->
