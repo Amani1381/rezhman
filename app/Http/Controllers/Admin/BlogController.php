@@ -29,7 +29,12 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        if (view::exists('index.v1.admin.blogs.add')){
+            $blogs=Blog::all();
+            return view('index.v1.admin.blogs.add',compact(['blogs']));
+        }else{
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
@@ -37,7 +42,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $blog=new Blog();
+            $blog->title=$request->input('title');
+            $blog->body=$request->input('body');
+            $blog->image_id=$request->input('image_id');
+            $blog->admin_id=$request->input('admin_id');
+            $blog->save();
+            Session::flash('blog_success','با موفقیت ایجاد شد');
+            return redirect('admin/blogs');
+        }catch (\Exception $er){
+            Session::flash('blog_error','خطا در ذخیره سازی');
+            return redirect('admin/blogs/create');
+        }
     }
 
     /**
@@ -77,6 +94,25 @@ class BlogController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     */
+    public function delete($id)
+    {
+        try{
+            $blog=Blog::findorfail($id);
+            $blog->delete();
+            Session::flash('blog_success','عملیات موفقیت آمیز بود');
+            return redirect('admin/blogs');
+        }catch (\Exception $er){
+            Session::flash('blog_error','خطا در انجام عملیات');
+            return redirect('admin/blogs');
+        }
+
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
      */
     public function destroy(string $id)
     {
