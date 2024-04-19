@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\view;
+use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
@@ -12,7 +15,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        if (view::exists('index.v1.admin.blogs.list')){
+            $blogs=Blog::all();
+            return view('index.v1.admin.blogs.list',compact('blogs'));
+        }else{
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**

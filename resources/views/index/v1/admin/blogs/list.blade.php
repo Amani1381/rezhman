@@ -10,6 +10,18 @@
                 <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
                     <!--begin::Page title-->
                     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                        @if(Session::has('blog_success'))
+                            <div class="alert alert-success">
+                                <div>{{session('blog_success')}}</div>
+                            </div>
+
+                        @endif
+                            @if(Session::has('blog_error'))
+                                <div class="alert alert-success">
+                                    <div>{{session('blog_error')}}</div>
+                                </div>
+
+                            @endif
                         <!--begin::Title-->
                         <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">جداول</h1>
                         <!--end::Title-->
@@ -71,6 +83,7 @@
                                     <!--end::Table head-->
                                     <!--begin::Table body-->
                                     <tbody>
+                                    @foreach($blogs as $row)
                                     <tr>
                                         <td>
                                             <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">1</a>
@@ -113,6 +126,7 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     </tbody>
                                     <!--end::Table body-->
                                 </table>

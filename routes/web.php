@@ -9,10 +9,10 @@ Route::get('/', function () {
 //@@@@@@@@
 
 
-Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\َAdmin'],function (){
+Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin'],function (){
     Route::resource('categories','CategoryController');
     Route::Patch('categories/update/{id}','CategoryController@update')->name('update.category');
     Route::get('categories/delete/{id}','CategoryController@delete')->name('categories.delete');
-    Route::resource('blogs','BlogController');
     Route::get('blog/delete/{id}','BlogController@delete')->name('blog.delete');
+    Route::resource('blogs','BlogController');
     });

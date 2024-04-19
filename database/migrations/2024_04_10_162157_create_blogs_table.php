@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('body')->nullable();
+            $table->integer('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+            $table->integer('admin_id')->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }
