@@ -64,8 +64,18 @@
                                 <!--end::کارت header-->
                                 <!--begin::کارت body-->
                                 <div class="card-body pt-5">
+                                    @if($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <!--begin::Form-->
-                                    <form id="kt_ecommerce_settings_general_form" class="form" action="#">
+                                        <form action="{{url('admin/blogs/store')}}" method="post">
+                                            @csrf
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Tags-->
