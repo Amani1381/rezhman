@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
+use Symfony\Component\HttpFoundation\Response;
+
+
 
 class RoleController extends Controller
 {
@@ -20,7 +26,12 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        if (view::exists('index.v1.admin.role.add')){
+            $roles=Role::all();
+            return view('index.v1.admin.role.add',compact(['roles']));
+        }else{
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
@@ -28,7 +39,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        try{
+            $role=new Role();
+            $role->name=$request->input('name');
+            $role->title=$request->input('title');
+            $role->admin_id = 1;
+            $role->save();
+            Session::flash('role_success','عملیات موفقیت آمیز بود');
+            return redirect('admin/roles');
+        }catch (\Exception $er){
+            Session::flash('role_error','خطا در انجام عملیات');
+            return redirect('admin/roles');
+        }
+
     }
 
     /**

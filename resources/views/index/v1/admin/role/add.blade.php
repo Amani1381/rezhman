@@ -79,7 +79,7 @@
                                         </div>
                                     @endif
                                     <!--begin::Form-->
-                                    <form id="kt_ecommerce_settings_general_form" class="form" action="" method="post">
+                                    <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('list-role')}}" method="post">
                                         @csrf
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
