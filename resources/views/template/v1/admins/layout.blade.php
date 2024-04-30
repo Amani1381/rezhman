@@ -554,6 +554,7 @@ ph
             <script src="{{asset('assets/v1/admins/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
             <script src="{{asset('assets/v1/admins/js/custom/utilities/modals/create-app.js')}}"></script>
             <script src="{{asset('assets/v1/admins/js/custom/utilities/modals/users-search.js')}}"></script>
+            @yield('script-ckeditor')
             <!--end::سفارشی Javascript-->
             <!--end::Javascript-->
 </body>

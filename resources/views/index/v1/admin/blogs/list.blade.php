@@ -60,7 +60,7 @@
                                 <span class="card-label fw-bold fs-3 mb-1">خبرها</span>
                             </h3>
                             <div class="card-toolbar">
-                                <a href="#" class="btn btn-sm btn-light-primary">
+                                <a href="{{route('blogs.create')}}" class="btn btn-sm btn-light-primary">
                                     <i class="ki-duotone ki-plus fs-2"></i>افزودن</a>
                             </div>
                         </div>

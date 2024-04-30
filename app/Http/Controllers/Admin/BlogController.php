@@ -42,16 +42,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         try {
             $blog=new Blog();
             $blog->title=$request->input('title');
             $blog->body=$request->input('body');
-            $blog->image_id=$request->input('image_id');
-            $blog->admin_id=$request->input('admin_id');
+            $blog->status=$request->input('status');
+            $blog->image_id=1;
+            $blog->admin_id=1;
             $blog->save();
             Session::flash('blog_success','با موفقیت ایجاد شد');
             return redirect('admin/blogs');
         }catch (\Exception $er){
+            return $er;
             Session::flash('blog_error','خطا در ذخیره سازی');
             return redirect('admin/blogs/create');
         }

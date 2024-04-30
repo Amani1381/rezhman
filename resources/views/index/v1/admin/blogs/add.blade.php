@@ -1,4 +1,7 @@
 @extends('template.v1.admins.layout')
+@section('styles')
+    <link rel="stylesheet" href="{{asset('/admin/dist/css/dropzone.css')}}">
+@endsection
 @section('content')
     <!--begin::اصلی-->
     <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -74,7 +77,7 @@
                                         </div>
                                     @endif
                                     <!--begin::Form-->
-                                        <form action="{{url('admin/blogs/store')}}" method="post">
+                                        <form action="{{route('blogs.store')}}" method="post">
                                             @csrf
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
@@ -91,7 +94,7 @@
                                             </label>
                                             <!--end::Tags-->
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid" name="title" value="" />
+                                            <input type="text" class="form-control form-control-solid" name="title" />
                                             <!--end::Input-->
                                         </div>
                                         <div class="fv-row mb-7">
@@ -108,7 +111,7 @@
                                             </label>
                                             <!--end::Tags-->
                                             <!--begin::Input-->
-                                            <div id="editor" name="body"></div>
+                                            <textarea  id="description" name="body">{{old('body')}}</textarea>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -240,13 +243,14 @@
     <!--end::اپلیکیشن-->
 @endsection
 @section('script-ckeditor')
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
+    <script type="text/javascript" src="{{asset('assets/v1/admins/plugins/custom/ckeditor/ckeditor.js')}}"></script>
     <script>
-        ClassicEditor
-
-            .create( document.querySelector( '#editor' ))
-            .catch( error => {
-                console.error( error );
-            } );
+        CKEDITOR.replace('description',{
+            customConfig:'config.js',
+            toolbar:'simple',
+            language:'fa',
+            removePlugins:'cloudservices, easyimage'
+        });
     </script>
+
 @endsection

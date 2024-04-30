@@ -27,8 +27,7 @@ class RoleController extends Controller
     public function create()
     {
         if (view::exists('index.v1.admin.role.add')){
-            $roles=Role::all();
-            return view('index.v1.admin.role.add',compact(['roles']));
+            return view('index.v1.admin.role.add');
         }else{
             abort(Response::HTTP_NOT_FOUND);
         }
@@ -39,6 +38,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:100|regex:/^[ \s]+$/',
+            'title' => 'required|min:3|max:100',
+        ]);
 
 
         try{

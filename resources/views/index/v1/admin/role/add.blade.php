@@ -79,7 +79,7 @@
                                         </div>
                                     @endif
                                     <!--begin::Form-->
-                                    <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('list-role')}}" method="post">
+                                    <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('roles.store')}}" method="post">
                                         @csrf
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
@@ -96,7 +96,7 @@
                                             </label>
                                             <!--end::Tags-->
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid" name="name" id="name" value="" />
+                                            <input type="text" class="form-control form-control-solid" name="name" id="name"/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -115,7 +115,7 @@
                                             </label>
                                             <!--end::Tags-->
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid" name="title" id="title" value="" />
+                                            <input type="text" class="form-control form-control-solid" name="title" id="title"/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -124,9 +124,6 @@
                                         <!--end::Separator-->
                                         <!--begin::عملیات buttons-->
                                         <div class="d-flex justify-content-end">
-                                            <!--begin::Button-->
-                                            <button type="reset" data-kt-contacts-type="cancel" class="btn btn-light me-3">انصراف</button>
-                                            <!--end::Button-->
                                             <!--begin::Button-->
                                             <button type="submit" data-kt-contacts-type="submit" class="btn btn-primary">
                                                 <span class="indicator-label">ذخیره</span>
