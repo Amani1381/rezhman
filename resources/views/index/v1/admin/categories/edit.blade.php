@@ -26,7 +26,7 @@
                             </li>
                             <!--end::item-->
                             <!--begin::item-->
-                            <li class="breadcrumb-item text-muted">افزودن</li>
+                            <li class="breadcrumb-item text-muted">ویرایش</li>
                             <!--end::item-->
                         </ul>
                         <!--end::Breadcrumb-->
@@ -57,7 +57,7 @@
                                             <span class="path4"></span>
                                             <span class="path5"></span>
                                         </i>
-                                        <h2>افزودن دسته بندی جدید</h2>
+                                        <h2>ویرایش دسته بندی</h2>
                                     </div>
                                     <!--end::کارت title-->
                                 </div>
@@ -79,9 +79,9 @@
                                     </div>
                                 @endif
                                     <!--begin::Form-->
-                                    <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('update.category',$category->id)}}" method="post">
+                                    <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('categories.update',$category->id)}}" method="post">
                                     {{csrf_field()}}
-                                    {{method_field('PATCH')}}         
+                                    {{method_field('PATCH')}}
                                     <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Tags-->
@@ -118,7 +118,7 @@
                                                             <option>انتخاب کنید</option>
                                                             @foreach($categories as $row)
                                                                 <option value="{{$row->id}}">{{$row->name}}</option>
-                                                            @endforeach 
+                                                            @endforeach
                                                         </select>
                                                         <!--end::انتخاب2-->
                                                     </div>
@@ -133,9 +133,6 @@
                                         <!--end::Separator-->
                                         <!--begin::عملیات buttons-->
                                         <div class="d-flex justify-content-end">
-                                            <!--begin::Button-->
-                                            <button type="reset" data-kt-contacts-type="cancel" class="btn btn-light me-3">انصراف</button>
-                                            <!--end::Button-->
                                             <!--begin::Button-->
                                             <button type="submit" data-kt-contacts-type="submit" class="btn btn-primary">
                                                 <span class="indicator-label">ذخیره</span>

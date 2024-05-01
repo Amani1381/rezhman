@@ -42,7 +42,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
         try {
             $blog=new Blog();
             $blog->title=$request->input('title');
@@ -63,12 +62,13 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         if (view::exists('index.v1.admin.blogs.show')){
             $blog = Blog::findorfail($id);
+            $blogs=Blog::with('image')->paginate(8);
             if($blog!=null){
-                return view('index.v1.admin.blogs.show',compact('blog'));
+                return view('index.v1.admin.blogs.show',compact('blog','blogs'));
             }
             if ($blog==null){
                 Session::flash('blog_error','رکورد یافت نشد');

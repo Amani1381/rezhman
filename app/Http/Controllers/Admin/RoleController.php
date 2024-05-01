@@ -42,8 +42,6 @@ class RoleController extends Controller
             'name' => 'required|min:3|max:100|regex:/^[ \s]+$/',
             'title' => 'required|min:3|max:100',
         ]);
-
-
         try{
             $role=new Role();
             $role->name=$request->input('name');

@@ -38,10 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(),[
+
+        $request->validate([
             'name' => 'required|min:3|max:100|regex:/^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ\s]+$/',
-            'parent_id' => 'numeric'
-         ]);
+        ]);
          try{
              $category=new Category();
              $category->name=$request->input('name');
@@ -88,9 +88,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->validate(request(), [
+        $request->validate([
             'name' => 'required|min:3|max:100|regex:/^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ\s]+$/',
-            'parent_id' => 'numeric'
         ]);
         try {
             $category=Category::findorfail($id);
