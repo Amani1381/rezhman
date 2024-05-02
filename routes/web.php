@@ -20,5 +20,6 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin'],funct
     Route::get('blog/delete/{id}','BlogController@delete')->name('blog.delete');
     Route::resource('blogs','BlogController');
     Route::resource('roles','RoleController');
+    Route::get('roles/delete/{id}','RoleController@destroy')->name('roles.delete');
 });
 

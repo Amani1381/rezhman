@@ -20,8 +20,12 @@
                             <div class="alert alert-success">
                                 <div>{{session('role_error')}}</div>
                             </div>
+                                @foreach($errors->all() as $error )
+                                    <li>{{$error}}</li>
+                                @endforeach
 
                         @endif
+
                         <!--begin::Title-->
                         <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">جداول</h1>
                         <!--end::Title-->
@@ -60,7 +64,7 @@
                                 <span class="card-label fw-bold fs-3 mb-1">مقام ها</span>
                             </h3>
                             <div class="card-toolbar">
-                                <a href="{{route('blogs.create')}}" class="btn btn-sm btn-light-primary">
+                                <a href="{{route('roles.create')}}" class="btn btn-sm btn-light-primary">
                                     <i class="ki-duotone ki-plus fs-2"></i>افزودن</a>
                             </div>
                         </div>
@@ -83,20 +87,23 @@
                                     <!--end::Table head-->
                                     <!--begin::Table body-->
                                     <tbody>
+                                    @foreach($roles as $row)
+
+
                                         <tr>
                                             <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">1</a>
+                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{$loop->index+1}}</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="d-flex justify-content-start flex-column">
                                                         <a href="#" class="text-dark fw-bold text-hover-primary mb-1 fs-6">راه حل</a>
-                                                        <span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+                                                        <span class="text-muted fw-semibold text-muted d-block fs-7">{{$row->name}}</span>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">دسته بندی 1</a>
+                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{$row->title}}</a>
                                             </td>
                                             <td class="text-end">
                                                 <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -111,7 +118,7 @@
                                                         <span class="path2"></span>
                                                     </i>
                                                 </a>
-                                                <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                <a href="{{route('roles.delete' ,$row->id)}}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                     <i class="ki-duotone ki-trash fs-2">
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>

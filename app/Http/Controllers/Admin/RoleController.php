@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        if (view::exists('index.v1.admin.role.list')){
+            $roles=Role::all();
+            return view('index.v1.admin.role.list',compact('roles'));
+        }else{
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
@@ -39,7 +45,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3|max:100|regex:/^[ \s]+$/',
+            'name' => 'required|min:3|max:100|',
             'title' => 'required|min:3|max:100',
         ]);
 
@@ -88,6 +94,15 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $role=Role::findorfail($id);
+            $role->delete();
+            Session::flash('role_success','عملیات موفقیت آمیز بود');
+            return redirect('admin/roles');
+        }catch (\Exception $er){
+            Session::flash('role_error','خطا در انجام عملیات');
+            return redirect('admin/roles');
+        }
+
     }
 }
