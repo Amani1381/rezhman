@@ -48,8 +48,6 @@ class RoleController extends Controller
             'name' => 'required|min:3|max:100|',
             'title' => 'required|min:3|max:100',
         ]);
-
-
         try{
             $role=new Role();
             $role->name=$request->input('name');

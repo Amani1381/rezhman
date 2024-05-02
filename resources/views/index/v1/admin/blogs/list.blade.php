@@ -86,7 +86,7 @@
                                     @foreach($blogs as $row)
                                     <tr>
                                         <td>
-                                            <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">1</a>
+                                            <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{$loop->index+1}}</a>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -94,8 +94,8 @@
                                                     <img src="{{asset('assets/v1/admins/media/stock/600x400/img-26.jpg')}}" class="" alt="" />
                                                 </div>
                                                 <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-dark fw-bold text-hover-primary mb-1 fs-6">راه حل</a>
-                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+                                                    <a href="#" class="text-dark fw-bold text-hover-primary mb-1 fs-6">{{substr($row->title,0,20)}}</a>
+                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{!! substr($row->body,0,50) !!}</span>
                                                 </div>
                                             </div>
                                         </td>
@@ -103,7 +103,7 @@
                                             <span class="badge badge-light-primary fs-7 fw-bold">فعال</span>
                                         </td>
                                         <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <a href="{{route('blogs.show',$row->id)}}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="ki-duotone ki-switch fs-2">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>

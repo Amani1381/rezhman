@@ -79,7 +79,7 @@
                                                 </div>
                                             @endif
                                             <!--begin::Form-->
-                                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{url('admin/categories/store')}}" method="post">
+                                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{route('categories.store')}}" method="post">
                                             @csrf
                                                 <!--begin::Input group-->
                                                 <div class="fv-row mb-7">
@@ -96,7 +96,7 @@
                                                     </label>
                                                     <!--end::Tags-->
                                                     <!--begin::Input-->
-                                                    <input type="text" class="form-control form-control-solid" name="name" id="name" value="" />
+                                                    <input type="text" class="form-control form-control-solid" name="name" id="name"/>
                                                     <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -113,8 +113,8 @@
                                                             <!--end::Tags-->
                                                             <div class="w-100">
                                                                 <!--begin::انتخاب2-->
-                                                                <select id="kt_ecommerce_select2_country" class="form-select form-select-solid" name="parent_id" id="parent_id" data-kt-ecommerce-settings-type="select2_flags" data-placeholder="انتخاب کشور">
-                                                                    <option>انتخاب کنید</option>
+                                                                <select name="parent_id" id="kt_ecommerce_select2_country" class="form-select form-select-solid" name="parent_id" id="parent_id" data-kt-ecommerce-settings-type="select2_flags" data-placeholder="انتخاب کشور">
+                                                                    <option value="">انتخاب کنید</option>
                                                                     @foreach($categories as $row)
                                                                         <option value="{{$row->id}}">{{$row->name}}</option>
                                                                     @endforeach
@@ -132,9 +132,6 @@
                                                 <!--end::Separator-->
                                                 <!--begin::عملیات buttons-->
                                                 <div class="d-flex justify-content-end">
-                                                    <!--begin::Button-->
-                                                    <button type="reset" data-kt-contacts-type="cancel" class="btn btn-light me-3">انصراف</button>
-                                                    <!--end::Button-->
                                                     <!--begin::Button-->
                                                     <button type="submit" data-kt-contacts-type="submit" class="btn btn-primary">
                                                         <span class="indicator-label">ذخیره</span>
